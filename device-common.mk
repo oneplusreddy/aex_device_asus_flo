@@ -25,6 +25,10 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := hdpi
 
+PRODUCT_COPY_FILES += \
+    vendor/asus/deb/proprietary/lib/libril-qc-qmi-1.so:system/lib/libril-qc-qmi-1.so \
+    vendor/asus/deb/proprietary/lib/libril-qcril-hook-oem.so:system/lib/libril-qcril-hook-oem.so
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
