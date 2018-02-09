@@ -25,6 +25,7 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := hdpi
 
+# RIL
 PRODUCT_COPY_FILES += \
     vendor/asus/deb/proprietary/lib/libril-qc-qmi-1.so:system/lib/libril-qc-qmi-1.so \
     vendor/asus/deb/proprietary/lib/libril-qcril-hook-oem.so:system/lib/libril-qcril-hook-oem.so
@@ -38,6 +39,21 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     libaudio-resampler
+    
+# Enable AAC 5.1 output
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.aac_51_output_enabled=true
+    
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.egl.recordable.rgba8888=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sensors.wl_dis=true \
+    ro.qualcomm.sensors.smd=true
+
+# Monitor device rotation for speaker channel swap
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.audio.monitorRotation=true
 
 # Audio configuration
 USE_XML_AUDIO_POLICY_CONF := 1
@@ -248,6 +264,10 @@ PRODUCT_PACKAGES += \
     libwfcu \
     wpa_supplicant \
     wpa_supplicant.conf
+    
+PRODUCT_PROPERTY_OVERRIDES += \
+	wifi.interface=wlan0 \
+    wifi.supplicant_scan_interval=15
 
 PRODUCT_COPY_FILES += \
     device/asus/flo/rootdir/etc/init.flo.wifi.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.flo.wifi.sh \
