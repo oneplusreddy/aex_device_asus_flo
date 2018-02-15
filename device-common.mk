@@ -86,11 +86,14 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1200
 TARGET_BOOTANIMATION_HALF_RES := true
 
+#Added from mako
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl \
-    camera.device@3.2-impl \
-    Snap
+	camera.mako \
+	libmmcamera_interface2 \
+	libmmcamera_interface \
+	android.hardware.camera.provider@2.4-impl \
+	camera.device@1.0-impl
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -282,6 +285,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libqcomvoiceprocessingdescriptors
+#Added from mako
+PRODUCT_COPY_FILES += \
+    device/lge/mako/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 # Dalvik/HWUI
 $(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
+
+#Added from mako
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.media.treble_omx=false
+    
+
+
