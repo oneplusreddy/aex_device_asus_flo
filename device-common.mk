@@ -94,7 +94,20 @@ PRODUCT_PACKAGES += \
 	libmmcamera_interface \
 	android.hardware.camera.provider@2.4-impl \
 	camera.device@1.0-impl
-
+	
+PRODUCT_PACKAGES += \
+        libmm-omxcore \
+	libdivxdrmdecrypt \
+	libOmxVdec \
+	libOmxVenc \
+	libOmxCore \
+	libstagefrighthw \
+	libc2dcolorconvert
+	
+#Added from mako
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.media.treble_omx=false
+    
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images \
@@ -291,10 +304,9 @@ PRODUCT_COPY_FILES += \
 
 # Dalvik/HWUI
 $(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
 
-#Added from mako
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.media.treble_omx=false
+
     
 
 
